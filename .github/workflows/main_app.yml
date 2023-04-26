@@ -19,7 +19,7 @@ jobs:
     # Check-out repository with the desired branch
     - uses: actions/checkout@v2
       with:
-        ref: dev
+        ref: Dev
     
     # Job-1: set up Python
     - name: Set up Python 3.10
