@@ -38,7 +38,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: nishivijan06/app:latest
+        tags: nishivijan06/enterprise1:latest
         #dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
         password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
