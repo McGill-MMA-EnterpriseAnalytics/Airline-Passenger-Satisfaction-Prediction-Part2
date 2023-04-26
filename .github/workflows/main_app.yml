@@ -1,5 +1,7 @@
+# Workflow name
 name: Python application with Docker
 
+# Run workflow on every push on main branch
 on:
   push:
     branches: [ "main" ]
@@ -7,22 +9,30 @@ on:
 permissions:
   contents: read
 
+# Workflow jobs
 jobs:
   build_and_test:
 
     runs-on: ubuntu-latest
 
     steps:
+    # Check-out repository
     - uses: actions/checkout@v2
+    
+    # Job-1: set up Python
     - name: Set up Python 3.10
       uses: actions/setup-python@v2
       with:
         python-version: "3.10"
+        
+    # Job-2: Install depdendecies
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
+    # Job-3: Build Docker Image
     - name: Build Docker image
       uses: docker/build-push-action@v2
       with:
@@ -32,6 +42,8 @@ jobs:
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
         password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
+        
+    # Job-4: Lint with flake8
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
