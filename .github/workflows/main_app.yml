@@ -37,7 +37,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        dockerfile: ./Dockerfile
+        dockerfile: ./FASTAPI/Dockerfile
         push: true
         tags: nishivijan06/enterprise1:latest
         # Use Docker login credentials stored in GitHub secrets
