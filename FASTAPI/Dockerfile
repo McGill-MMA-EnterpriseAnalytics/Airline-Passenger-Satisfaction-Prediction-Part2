@@ -9,10 +9,8 @@ LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
 
 RUN pip install --upgrade pip
 
-WORKDIR /FASTAPI/app
+WORKDIR /FASTAPI
 #COPY requirements.txt #/app/requirements.txt
-#RUN pip install --no-cache-dir -r /app/requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt
 
-COPY ./app
-
-#docker build . -f Dockerfile
+#COPY ./app
