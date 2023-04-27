@@ -36,6 +36,8 @@ jobs:
           tags: nishivijan06/enterprise1:tagname
           username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
+          registry: https://index.docker.io/v1/
+          access-token: ${{ secrets.DOCKER_ACCESS_TOKEN }}
           
       - name: Lint with flake8
         run: |
