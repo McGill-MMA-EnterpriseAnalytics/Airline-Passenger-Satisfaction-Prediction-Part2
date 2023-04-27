@@ -1,4 +1,4 @@
-# Check
+# Check file
 name: Publish Docker Image to Docker Hub
 
 on:
