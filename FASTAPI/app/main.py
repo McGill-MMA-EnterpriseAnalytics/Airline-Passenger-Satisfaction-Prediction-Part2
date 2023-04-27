@@ -41,7 +41,7 @@ with open(f"{BASE_DIR}/trained_pipeline_{__version__}.pkl", "rb") as f:
 
   
 @app.route('/')
-def index():
+def read_root():
     return render_template('index.html')
 
 #@app.get("/")
