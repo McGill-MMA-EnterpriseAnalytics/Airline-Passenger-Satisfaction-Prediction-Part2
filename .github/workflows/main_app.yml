@@ -35,7 +35,7 @@ jobs:
           push: true
           tags: nishivijan06/enterprise1:tagname
           username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
-          password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
+          password: ${{ secrets.TEST_SECRET }}
           
           
       - name: Lint with flake8
