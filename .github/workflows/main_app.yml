@@ -28,10 +28,15 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           
       - name: Build and Push Docker image
-        run: |
-          docker build --tag my-image:latest --privileged .
-          docker login -u ${{ secrets.DOCKER_LOGIN_USERNAME }} -p ${{ secrets.DOCKER_LOGIN_PASSWORD }}
-          docker push my-image:latest
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          dockerfile: Dockerfile
+          push: true
+          tags: nishivijan06/enterprise1:tagname
+          build-args: DOCKER_BUILDKIT=1
+          username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
+          password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
           
       - name: Lint with flake8
         run: |
