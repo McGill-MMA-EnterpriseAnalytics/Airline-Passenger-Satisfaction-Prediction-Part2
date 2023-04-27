@@ -13,6 +13,6 @@ WORKDIR /FASTAPI/app
 #COPY requirements.txt #/app/requirements.txt
 #RUN pip install --no-cache-dir -r /app/requirements.txt
 
-COPY ./app /app
+COPY ./app
 
 #docker build . -f Dockerfile
