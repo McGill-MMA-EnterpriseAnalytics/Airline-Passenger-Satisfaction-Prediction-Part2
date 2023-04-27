@@ -6,10 +6,8 @@ on:
       - main
 
 permissions:
-  contents:
-    read: true
-    write: true
-    execute: true
+  contents: read
+  packages: write
 
 jobs:
   build_and_test:
