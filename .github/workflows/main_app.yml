@@ -43,21 +43,11 @@ jobs:
           push: true
           tags: nishivijan06/enterprise1:tagname #${{ secrets.TEST_SECRET }}:tagname
           
-
       - name: Lint with flake8
         run: |
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
 
-      #- name: Build and Push Docker image
-      #  uses: docker/build-push-action@v4
-       # with:
-        #  context: ./FASTAPI
-         # dockerfile: Dockerfile
-          #push: true
-      #    tags: nishivijan06/enterprise1:tagname
-       #   username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
-        #  password: ${{ secrets.TEST_SECRET }}
 
       
