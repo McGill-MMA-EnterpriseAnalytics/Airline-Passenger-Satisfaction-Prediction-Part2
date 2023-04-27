@@ -9,9 +9,9 @@ LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
 
 RUN pip install --upgrade pip
 
-WORKDIR /FASTAPI
-#COPY requirements.txt #/app/requirements.txt
+#WORKDIR /FASTAPI
+COPY requirements.txt ./FASTAPI/app/requirements.txt
 RUN pip freeze > requirements.txt
-RUN pip install --no-cache-dir -r /requirements.txt
+RUN pip install --no-cache-dir -r ./FASTAPI/app/requirements.txt
 
 #COPY ./app
