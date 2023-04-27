@@ -5,4 +5,4 @@ LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
 COPY requirements.txt /requirements.txt
 RUN pip install --no-cache-dir -r /requirements.txt
 
-COPY ./app FASTAPI/app
+COPY ./FASTAPI/app /FASTAPI/app
