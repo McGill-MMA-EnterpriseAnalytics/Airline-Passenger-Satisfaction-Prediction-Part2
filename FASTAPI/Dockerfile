@@ -3,12 +3,10 @@
 #RUN apt-get -y update
 #RUN apt-get -y install nginx
 
-#FROM python:3.9
-FROM tiangolo/uvicorn-gunicorn:python3.11-slim
+FROM python:3.9
+#FROM tiangolo/uvicorn-gunicorn:python3.11-slim
 
 LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
-
-RUN  pip install --upgrade pip
 
 COPY ./requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
