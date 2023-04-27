@@ -33,11 +33,9 @@ jobs:
           context: .
           dockerfile: Dockerfile
           push: true
-          tags: nishivijan06/enterprise1:tagname
+          tags: my-image:latest
           username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
-          registry: https://index.docker.io/v1/
-          args: --privileged
           
       - name: Lint with flake8
         run: |
