@@ -3,18 +3,11 @@
 #RUN apt-get -y update
 #RUN apt-get -y install nginx
 
-FROM tiangolo/uvicorn-gunicorn:python3.10
+FROM tiangolo/uvicorn-gunicorn:python3.11-slim
 
 LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
-
-RUN pip install --upgrade pip
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
-#WORKDIR /FASTAPI
-#COPY requirements.txt ./FASTAPI/app/requirements.txt
-#RUN pip freeze > requirements.txt
-#RUN pip install --no-cache-dir -r ./FASTAPI/app/requirements.txt
-
-#COPY ./app
+COPY ./app /app
