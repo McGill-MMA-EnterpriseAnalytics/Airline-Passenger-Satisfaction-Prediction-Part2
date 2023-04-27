@@ -14,5 +14,5 @@ jobs:
     - name: Build & Push Image
       run: |
         echo "${{ secrets.DOCKER_LOGIN_PASSWORD }}" | docker login -u "nishivijan06" --password-stdin
-        docker image build -t nishivijan06/enterprise1:latest .
+        docker image build -t nishivijan06/enterprise1:latest -f ./FASTAPI/Dockerfile .
         docker push nishivijan06/enterprise1:latest
