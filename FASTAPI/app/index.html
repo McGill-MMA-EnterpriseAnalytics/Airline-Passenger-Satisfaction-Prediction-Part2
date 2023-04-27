@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+    <meta charset="UTF-8">
+    <title>ML API</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+    
+</head>
+
+<body>
+    <div class="login">
+    <h1>Airline Passenger Satisfaction Prediction</h1>
+
+        <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <input type="text" name="Class" placeholder="Class" required="required" /><br>
+        <input type="text" name="Flight_Distance" placeholder="Flight_Distance" required="required" /><br>
+        <input type="text" name="Inflight_wifi_service" placeholder="Inflight_wifi_service" required="required" /><br>
+        <input type="text" name="Departure_Arrival_time_convenient" placeholder="Departure_Arrival_time_convenient" required="required" /><br>
+        <input type="text" name="Ease_of_Online_booking" placeholder="Ease_of_Online_booking" required="required" /><br>
+        <input type="text" name="Online_boarding" placeholder="Online_boarding" required="required" /><br>
+        <input type="text" name="Seat_comfort" placeholder="Seat_comfort" required="required" /><br>
+        <input type="text" name="Inflight_entertainment" placeholder="Inflight_entertainment" required="required" /><br>
+        <input type="text" name="On_board_service" placeholder="On_board_service" required="required" /><br>
+        <input type="text" name="Leg_room_service" placeholder="Leg_room_service" required="required" /><br>
+        <input type="text" name="Baggage_handling" placeholder="Baggage_handling" required="required" /><br>
+        <input type="text" name="Checkin_service" placeholder="Checkin_service" required="required" /><br>
+        <input type="text" name="Inflight_service" placeholder="Inflight_service" required="required" /><br>
+        <input type="text" name="Cleanliness" placeholder="Cleanliness" required="required" /><br>
+        <input type="text" name="Departure_Delay_in_Minutes" placeholder="Departure_Delay_in_Minutes" required="required" /><br>
+        <input type="text" name="Customer_Type_Loyal_Customer" placeholder="Customer_Type_Loyal_Customer" required="required" /><br>
+        <input type="text" name="Type_of_Travel_Business_travel" placeholder="Type_of_Travel_Business_travel" required="required" /><br>
+
+        
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+    <br>
+    <br>
+    
+    
+    </div>
+    {{prediction_text}}
+
+</body>
+</html>
