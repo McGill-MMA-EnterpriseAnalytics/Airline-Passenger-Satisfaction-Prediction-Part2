@@ -39,9 +39,9 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent
 with open(f"{BASE_DIR}/trained_pipeline_{__version__}.pkl", "rb") as f:
     pipeline = pickle.load(f)
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@app.route('/')
+def airline():
+    return render_template('airline.html')
 
 # Define the predict endpoint
 @app.post("/predict")
