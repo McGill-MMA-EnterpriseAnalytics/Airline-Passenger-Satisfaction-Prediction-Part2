@@ -33,7 +33,7 @@ jobs:
           context: .
           dockerfile: Dockerfile
           push: true
-          tags: nishivijan06/enterprise1:tagname
+          tags: nishivijan06/enterprise1:latest
           build-args: DOCKER_BUILDKIT=1
           username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
