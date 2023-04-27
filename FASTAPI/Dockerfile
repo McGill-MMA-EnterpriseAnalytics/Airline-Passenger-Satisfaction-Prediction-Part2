@@ -15,12 +15,11 @@
 
 FROM python:3.9
 
-WORKDIR /FASTAPI
+# WORKDIR /FASTAPI
 
 COPY ./requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 
-RUN pip install --no-cache-dir --upgrade -r /FASTAPI/requirements.txt
-
-COPY ./app ./app
+COPY ./app ./FASTAPI/app
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
