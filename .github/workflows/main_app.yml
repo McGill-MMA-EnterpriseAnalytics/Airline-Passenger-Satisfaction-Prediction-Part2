@@ -30,12 +30,13 @@ jobs:
       - name: Build and Push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
-          dockerfile: ./FASTAPI/Dockerfile
+          context: ./FASTAPI
+          dockerfile: Dockerfile
           push: true
           tags: nishivijan06/enterprise1:tagname
           username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
+          
           
       - name: Lint with flake8
         run: |
