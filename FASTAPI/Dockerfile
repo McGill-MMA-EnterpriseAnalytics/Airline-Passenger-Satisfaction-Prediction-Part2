@@ -1,10 +1,17 @@
-FROM tiangolo/uvicorn-gunicorn:python3.10
+# Basic nginx dockerfile starting with Ubuntu 20.04
+FROM ubuntu:20.04
+RUN apt-get -y update
+RUN apt-get -y install nginx
 
-LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
 
-COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
 
-COPY ./app /app/app
+#FROM tiangolo/uvicorn-gunicorn:python3.10
 
-docker build . -f Dockerfile
+#LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
+
+#COPY requirements.txt /app/requirements.txt
+#RUN pip install --no-cache-dir -r /app/requirements.txt
+
+#COPY ./app /app/app
+
+#docker build . -f Dockerfile
