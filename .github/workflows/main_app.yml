@@ -41,7 +41,7 @@ jobs:
         with:
           context: ./FASTAPI
           push: true
-          tags: ${{ secrets.TEST_SECRET }}:tagname
+          tags: nishivijan06/enterprise1:tagname #${{ secrets.TEST_SECRET }}:tagname
           
 
       - name: Lint with flake8
