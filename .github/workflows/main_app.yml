@@ -1,53 +1,18 @@
-# Workflow name
-name: Python application with Docker
+name: Python application
 
-# Run workflow on every push on main branch
 on:
   push:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
-
-# Workflow jobs
+   branches: [ master ]
+      
 jobs:
-  build_and_test:
+  build:
 
     runs-on: ubuntu-latest
 
     steps:
-    # Check-out repository with the desired branch
-    - uses: actions/checkout@v2
-    
-    # Job-1: set up Python
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v2
-      with:
-        python-version: "3.10"
-        
-    # Job-2: Install dependencies
-    - name: Install dependencies
+    - uses: actions/checkout@v1
+    - name: Build & Push Image
       run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        
-    # Job-3: Build and Push Docker Image
-    - name: Build and Push Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        Dockerfile: FASTAPI/Dockerfile
-        push: true
-        tags: nishivijan06/enterprise1:latest
-        # Use Docker login credentials stored in GitHub secrets
-        username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
-        password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
-        
-    # Job-4: Lint with flake8
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        echo "${{ secrets.DOCKER_LOGIN_PASSWORD }}" | docker login -u "nishivijan06" --password-stdin
+        docker image build -t nishivijan06/enterprise1:latest .
+        docker push nishivijan06/enterprise1:latest
