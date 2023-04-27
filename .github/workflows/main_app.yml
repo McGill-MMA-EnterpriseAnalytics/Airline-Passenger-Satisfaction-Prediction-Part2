@@ -1,18 +1,43 @@
-name: Python application
+name: Python application with Docker
 
 on:
   push:
-   branches: [ master ]
-      
-jobs:
-  build:
+    branches:
+      - main
 
+permissions:
+  contents: read
+
+jobs:
+  build_and_test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Build & Push Image
-      run: |
-        echo "${{ secrets.DOCKER_LOGIN_PASSWORD }}" | docker login -u "nishivijan06" --password-stdin
-        docker image build -t nishivijan06/enterprise1:latest -f ./FASTAPI/Dockerfile .
-        docker push nishivijan06/enterprise1:latest
+      - name: Check out repository
+        uses: actions/checkout@v2
+        
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          dockerfile: ./FASTAPI/Dockerfile
+          push: true
+          tags: nishivijan06/enterprise1:tagname
+          username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
+          password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
+          
+      - name: Lint with flake8
+        run: |
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
