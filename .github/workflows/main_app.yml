@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.DOCKER_LOGIN_USERNAME }}
           password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
           registry: https://index.docker.io/v1/
-          access-token: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+          args: --privileged
           
       - name: Lint with flake8
         run: |
