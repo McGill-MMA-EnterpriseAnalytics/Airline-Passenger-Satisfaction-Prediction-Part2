@@ -1,38 +1,9 @@
-# Airline-Passenger-Satisfaction-Prediction
+# Airline-Passenger-Satisfaction-Prediction-2
 INSY 695 Group 3 - Airline Passenger Satisfaction Prediction 
 
 https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction?select=train.csv
 
-This project focusses on deriving insights from the customer satisfaction dataset inorder to understand the key attributes that contribute most to customer satisfaction.
-
-#### Motivation for this project:
-
-1. Airlines leave upto 1.4B USD in revenue on the table by failing to increase their customer satisfaction (source: Forrester)
-2. It takes almost 200K USD per year for a company of size 1000 and $100 in revenue to run a NPS program (source: CustomerGauge)
-
-#### Customer satisfaction is of utmost importance for airlines for several reasons:
-
-1) Customer Loyalty: Airlines want to build a loyal customer base who choose to fly with them repeatedly. Customers who are satisfied with their experience are more likely to choose the same airline in the future, leading to increased revenue for the airline.
-
-2) Reputation: Airlines rely heavily on their reputation, which is built on the experiences of their customers. Satisfied customers are more likely to spread positive word-of-mouth, leading to more customers and a better reputation. On the other hand, dissatisfied customers can harm the airline's reputation, leading to a decrease in business.
-
-3) Competitive Advantage: Airlines operate in a highly competitive industry, and customer satisfaction is one of the key factors that sets them apart from their competitors. Airlines that prioritize customer satisfaction can gain a competitive advantage, attracting more customers and generating more revenue.
-
-4) Revenue: Satisfied customers are more likely to spend more money on ancillary products and services offered by the airline, such as seat upgrades, in-flight meals, and baggage fees. In addition, they are more likely to return for future flights, leading to increased revenue for the airline.
-
-5) Compliance: Airlines are subject to a variety of regulations and standards, including safety regulations and customer service standards. Meeting these standards is important for compliance, and satisfied customers are more likely to report positive feedback to regulatory authorities.
-
-#### This project has 3 primary objectives:
-
-1) Predict Customer Satisfaction and create a dashboard to visualize the results
-2) Identify features that contribute most to customer satisfaction
-3) Use semi-supervised learning to create labels for data
-
-#### Expected Outcome:
-
-1) Increased Revenue (upto USD 1.4B)
-2) Cost savings in running NPS programs
-3) Improved brand image and perception
+This project is a continuation of the original airline customer satisfaction project which focusses on deriving insights from the customer satisfaction dataset inorder to understand the key attributes that contribute most to customer satisfaction.
 
 #### Steps Followed:
 
@@ -40,7 +11,18 @@ This project focusses on deriving insights from the customer satisfaction datase
 2) Data Modelling to Predict Customer Satisfaction.
 3) Define KPI (Satisfaction Ratio) and analyse previous results to maximize it.
 4) Create Dashboard to summarize results
-5) Do Further Causal Inference.
+5) Do Further Causal Inference
+6) Data leakage analysis
+7) Imbalanced classification check
+8) Model overfitting check 
+9) Model tuning using TPOT and H20
+10) Hyperparameter tuning using Hyperopt and Optuna
+11) Unsupervisied learning - KNN
+12) Model explainability using SHAP
+13) Model serving using FastAPI and Docker containers
+14) CICD using Github actions
+15) Drift analysis
+16) Dynamic data monitoring
 
 
 #### Tasks Done in Descriptive Analysis of Data:
@@ -57,59 +39,35 @@ This project focusses on deriving insights from the customer satisfaction datase
 11) Remove Outliers
 
 
-#### Tasks Done in Data Modelling to Predict Customer Satisfaction:
-1) Standardization of numeric variables
-2) Handling Missing values (The satisfaction level of each feature should range from 1 to 5.
-    If the rating is 0, that means the customer did not rate for this feature.)
-3) Splitting the Dataset (Train Test Split,Test Validation Split)
-4) Functions for Evaluation Metrics (ROC Curve,PR Curve,Classification Score)
-5) Verify Class Balance
-6) Feature Selection (LASSO,RFE)
-7) Based on the above results, we can drop 'Gender_Male','Gate_location','Age', 'Food_and_drink'.
-8) Implement Modelling:
 
-  Baseline Model - DummyClassifier
-  
-  Logistics Regression
-  
-  KNN
-  
-  Gaussian (Naive Bayees)
-  
-  Decision Tree
-  
-  Random Forest
-  
-  LightGBM
-  
-  XGBoost
-  
-  AdsBoost
-  
-9) Semi-supervised Learning:
-  Label Propagation KNN
-  Label Spreading
+#### Key Results:
+ 
+ 1) LigtGBM model with tuned hyperparameters using Hyperopt was chosen as the best model with an accuracy of ~97% on the test set
 
-10) Evaluate model on test set
-Given the results, LightGBM has the highest F1-Score. Now we test the model performance on the unseen test dataset.
-  
-  Results:
+<img width="1125" alt="image" src="https://user-images.githubusercontent.com/47519737/235040763-4748ce6d-4873-4f09-bc91-820cf098d1e3.png">
 
-![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/Model_results.png)
+
+ 2) Significant drift detected in data based on the synthetic data generated using CTGAN library (see image below)
+ 
+ <img width="1125" alt="image" src="https://user-images.githubusercontent.com/47519737/235040662-c18e65d3-8bd1-488a-9001-847b18e80dec.png">
+
+ 3) The synthetic data was generated using the process described below
+
+<img width="1074" alt="image" src="https://user-images.githubusercontent.com/47519737/235040917-a2de011a-0f8a-4e43-bcd3-9cc07c86133a.png">
+
+ 4) For CICD, on push to main branch, a workflow will be triggered that will pick the pickled model, rebuild and push the docker file to Heroku and Docker Hub
+
+<img width="337" alt="image" src="https://user-images.githubusercontent.com/47519737/235041227-a97b1605-c9cf-4f25-b45c-681853706537.png">
+<img width="337" alt="image" src="https://user-images.githubusercontent.com/47519737/235041278-dce8aa50-aaa8-477f-926a-52652e72e02e.png">
+
+
+ 
 
 Power BI dashboard:
 
 <img width="1203" alt="Screenshot 2023-02-26 at 2 40 03 PM" src="https://user-images.githubusercontent.com/47519737/221433187-d3e59d78-3800-4915-a516-d1391938365f.png">
 
 
-Results:
-
-![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/git1.png)
-![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/git2.png)
-![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/git3.png)
-![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/git4.png)
-![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/git5.png)
-![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/git6.png)
 
 
 #### Tasks Done in Defining KPI (Satisfaction Ratio) and analyse previous results to maximize it:
@@ -146,7 +104,6 @@ We can see that satifaction ratio is decreasing as departure delay increase, we 
 8) Implement T-Learner using LGBMCLassifier
 9) Implement X-Learner using XGBClassifier
 10) Implement X-Learner using LGBMCLassifier
-11) Outcome
 
 ![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/Causal_results.png)
 
@@ -169,6 +126,8 @@ Utkarsh Nagpal - 261071466
 Mathilda Zhang - 261112212
 
 Haoying Xu - 261109413
+
+Oscar Montemayor - 261082079
 
 
 
