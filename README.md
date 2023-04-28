@@ -3,7 +3,7 @@ INSY 695 Group 3 - Airline Passenger Satisfaction Prediction
 
 https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction?select=train.csv
 
-This project is a continuation of the original airline customer satisfaction project which focusses on deriving insights from the customer satisfaction dataset inorder to understand the key attributes that contribute most to customer satisfaction.
+This project is a continuation of the original airline customer satisfaction project which focuses on deriving insights from the customer satisfaction dataset in order to understand the key attributes that contribute most to customer satisfaction.
 
 #### Steps Followed:
 
@@ -29,12 +29,12 @@ This project is a continuation of the original airline customer satisfaction pro
 1) Cleaning column names
 2) Identify categorical columns and numerical columns
 3) Check missing values
-4) Check Distribtion of Target Variable
-5) Check Distribtion of Numerical Variables with respect to Target Variable
-6) Check Distribtion of Categorical Variables with respect to Target Variable
+4) Check Distribution of Target Variable
+5) Check Distribution of Numerical Variables with respect to Target Variable
+6) Check Distribution of Categorical Variables with respect to Target Variable
 7) Check Relationships between categorical variables
-8) Handling Categorical Vairables (Ordinal Encoding on 'Class',One Hot Encoding)
-9) Check Correlations and removing highly correlated feature
+8) Handling Categorical Variables (Ordinal Encoding on 'Class',One Hot Encoding)
+9) Check Correlations and remove highly correlated feature
 10) Handling missing values with SimpleImputer
 11) Remove Outliers
 
@@ -55,7 +55,7 @@ This project is a continuation of the original airline customer satisfaction pro
 
 <img width="1074" alt="image" src="https://user-images.githubusercontent.com/47519737/235040917-a2de011a-0f8a-4e43-bcd3-9cc07c86133a.png">
 
- 4) For CICD, on push to main branch, a workflow will be triggered that will pick the pickled model, rebuild and push the docker file to Heroku and Docker Hub
+ 4) For CICD, when push to the main branch, a workflow will be triggered that will pick the pickled model, rebuild and push the docker file to Heroku and Docker Hub
 
 <img width="337" alt="image" src="https://user-images.githubusercontent.com/47519737/235041227-a97b1605-c9cf-4f25-b45c-681853706537.png">
 <img width="337" alt="image" src="https://user-images.githubusercontent.com/47519737/235041278-dce8aa50-aaa8-477f-926a-52652e72e02e.png">
@@ -71,31 +71,31 @@ Power BI dashboard:
 
 
 #### Tasks Done in Defining KPI (Satisfaction Ratio) and analyse previous results to maximize it:
-1) We want to increase satisfaction , but need to define a single metric that we want to focus on
+1) We want to increase customer satisfaction rate, but need to define a single metric that we want to focus on
 2) New KPI is Satisfaction Ratio = Satisfaction / (Satisfaction + Neutral or NO Satisfaction )
 3) We look at the relation between this KPI and important features of the most accurate model. 
-4) Analyse Relation between Flight Distance and Satisfaction Ratio
+4) Analyse the Relation between Flight Distance and Satisfaction Ratio
 ![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/ba1.png)
 
-We can see that satisfaction ratio is lower in low distance flights so our maximum focus should be on them
+We can see that the satisfaction ratio is lower in low distance flights, so our maximum focus should be on them.
 
 5) Analyse Relation between Inflight_wifi_service and Satisfaction Ratio
 ![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/ba2.png)
 
-We see that satisfaction ratio increase with better wifi service , therefore we should focus towards providing better wifi service
+We see that the satisfaction ratio increase with better wifi service, therefore we should focus towards providing better wifi service.
 
-6) Analyse Relation between Departure Delay and Satisfaction Ratio
+6) Analyse the Relation between Departure Delay and Satisfaction Ratio
 ![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/ba3.png)
 
-We can see that satifaction ratio is decreasing as departure delay increase, we should try to decrease the delay
+We can see that the satisfaction ratio decreases as the departure delay increase, we should try to reduce the delay
 
 #### Tasks Done in Further Causal Inference:
-1) We are interested in which features about the flight would cause customer satisfactory / unsatisfactory. Hence we will not consider information about
+1) We are interested in which features of the flight would cause customer satisfactory / unsatisfactory. Hence we will not consider information about
    Customer: 'Age', 'Gender_Male', 'Customer_Type_Loyal Customer',
    Class: 'Class' and 'Type_of_Travel_Business travel'.
    'Flight_Distance', 'Departure_Delay_in_Minutes': Most of the time it is out of our control.
-2) For each feature, we want to answer the question "What if we provide better service for this feature, will my satisfication level increase?"
-   We consider rating larger than 3 as good enough service, and rating less or equal than 3 as need to improve.
+2) For each feature, we want to answer the question "What if we provide better service for this feature, will my satisfaction level increase?"
+   We consider a rating larger than 3 as good enough service, and a rating less or equal than 3 as need to improve.
 3) Convert all features into boolean
 4) Check Feature Importance - We want to see if the feature with high feature importance actually has high causal effect as well
 5) Implement S-Learner using XGBCLassifier
@@ -107,7 +107,7 @@ We can see that satifaction ratio is decreasing as departure delay increase, we 
 
 ![Data/Model_results.png](https://github.com/McGill-MMA-EnterpriseAnalytics/Airline-Passenger-Satisfaction-Prediction/blob/baddd7a9be720d85af68d4d04688f5d496ff9618/Data/Causal_results.png)
 
-The learners' results are nearly identical, with Online_boarding showing the greatest ATE, trailed by Leg_room_service and Inflight_wifi_service. To boost customer satisfaction, the airline ought to concentrate on enhancing their performance in these areas of service.
+The learners' results are nearly identical, with Online_boarding showing the greatest ATE, trailed by Leg_room_service and Inflight_wifi_service. To boost customer satisfaction, the airline ought to concentrate on enhancing its performance in these areas of service.
 
 
 #### Team Members:
