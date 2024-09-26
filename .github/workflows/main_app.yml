@@ -3,7 +3,7 @@ name: Python application with Docker
 on:
   push:
     branches:
-      - main
+      - docker-image-test
 
 permissions:
   contents: read
